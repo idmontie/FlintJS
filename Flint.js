@@ -15,6 +15,34 @@
   Flint = function (callback) {
     var self = this;
     var args = arguments;
+    var parse = function (input) {
+      if (input instanceof Array) {
+        return input.map(function (part) {
+          return parse(part);
+        }).reduce(function (a, b) {
+          return a && b;
+        });
+      }
+      else {
+        // Support dot notation in argument
+        var arg = input.split('.');
+        var deepValue = window[arg[0]];
+        if (typeof deepValue == 'undefined') {
+          return false;
+        }
+
+        for (var j = 1; j < arg.length; j++) {
+          deepValue = deepValue[arg[j]];
+
+          if (typeof deepValue == 'undefined') {
+            return false;
+          }
+        }
+
+        return true;
+      }
+    };
+
 
     if (arguments.length == 0) {
       return;
@@ -27,22 +55,10 @@
 
     var defined = true;
     for (var i = 1; i < arguments.length; i++) {
-      // Support dot notation in argument
-      var arg = arguments[i].split('.');
-      var deepValue = window[arg[0]];
+      defined = parse(arguments[i]);
 
-      if (typeof deepValue == 'undefined') {
-        defined = false;
+      if (!defined) {
         break;
-      }
-
-      for (var j = 1; j < arg.length; j++) {
-        deepValue = deepValue[arg[j]];
-
-        if (typeof deepValue == 'undefined') {
-          defined = false;
-          break;
-        }
       }
     }
 
