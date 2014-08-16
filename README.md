@@ -23,6 +23,12 @@ FlintJS is inefficient and should be only used when restructuring a project to a
 
 Once MeteorJS natively implements custom module loading functionality, this project will be obsolete.
 
+NOTE
+====
+
+Circular dependencies are not currently supported. In order to have a circular dependency, have the two files implement skeleton objects of each other
+whose definitions will be filled in at a later time (a la C and C++);
+
 Usage
 =====
 
