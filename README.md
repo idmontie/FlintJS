@@ -3,6 +3,12 @@ FlintJS
 
 Special module "loader" for Meteor.
 
+FlintJS is made to support MeteorJS's lack of module loading.  By waiting for certain globals to be defined, files can be loaded by Meteor without their contents being executed.
+
+FlintJS is inefficient and should be only used when restructuring a project to adhere to MeteorJS's deep-first-*.main.js-last is just as bas of a solution.
+
+Once MeteorJS natively implements custom module loading functionality, this project will be obsolete.
+
 Usage
 =====
 

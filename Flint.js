@@ -3,6 +3,8 @@
  * By: Ivan Montiel
  *
  * TODO support reference checks
+ * TODO support undefined parents of deep checks
+ * TODO support cancelling by using `new Flint();`
  */
 (function () {
   /**
