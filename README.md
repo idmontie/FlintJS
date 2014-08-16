@@ -1,9 +1,23 @@
 FlintJS
 =======
 
-Special module "loader" for Meteor.
+MeteorJS loads all Javascript files in the following order:
 
-FlintJS is made to support MeteorJS's lack of module loading.  By waiting for certain globals to be defined, files can be loaded by Meteor without their contents being executed.
+> The JavaScript and CSS files in an application are loaded according to these rules:
+> 
+> Files in the lib directory at the root of your application are loaded first.
+> 
+> Files that match main.* are loaded after everything else.
+> 
+> Files in subdirectories are loaded before files in parent directories, so that files in the deepest subdirectory are loaded first (after lib), and files in the root directory are loaded last (other than main.*).
+> 
+> Within a directory, files are loaded in alphabetical order by filename.
+> 
+> These rules stack, so that within lib, for example, files are still loaded in alphabetical order; and if there are multiple files named main.js, the ones in subdirectories are loaded earlier.
+
+Normally, this would be good enough.  But some projects need a better loading system.  FlintJS is made to fill that void.
+
+FlintJS is used to allow the Javascript file to be loaded, but for the main logic to wait until necessary globals are defined by other Javascript files.
 
 FlintJS is inefficient and should be only used when restructuring a project to adhere to MeteorJS's deep-first-*.main.js-last is just as bad of a solution.
 
