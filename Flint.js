@@ -3,7 +3,6 @@
  * By: Ivan Montiel
  *
  * TODO support reference checks
- * TODO support cancelling by using `new Flint();`
  */
 (function () {
   /**
@@ -16,7 +15,7 @@
   Flint = function (callback) {
     var self = this;
     var args = arguments;
-    
+
     if (arguments.length == 0) {
       return;
     }
