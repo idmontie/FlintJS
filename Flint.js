@@ -3,7 +3,6 @@
  * By: Ivan Montiel
  *
  * TODO support reference checks
- * TODO support undefined parents of deep checks
  * TODO support cancelling by using `new Flint();`
  */
 (function () {
@@ -13,10 +12,11 @@
    * Usage: Flint(function () { ... }, global1, global2);
    * 
    */
+
   Flint = function (callback) {
     var self = this;
     var args = arguments;
-
+    
     if (arguments.length == 0) {
       return;
     }
@@ -32,24 +32,32 @@
       var arg = arguments[i].split('.');
       var deepValue = window[arg[0]];
 
-      for (var j = 1; j < arg.length; j++) {
-        deepValue = deepValue[arg[j]];
-      }
-
       if (typeof deepValue == 'undefined') {
         defined = false;
         break;
       }
+
+      for (var j = 1; j < arg.length; j++) {
+        deepValue = deepValue[arg[j]];
+
+        if (typeof deepValue == 'undefined') {
+          defined = false;
+          break;
+        }
+      }
     }
 
     if (!defined) {
-      setTimeout(function () {
+      self.timeout = setTimeout(function () {
         Flint.apply(self, args);
       }, 10);
-      return;
+      return self;
     }
 
     callback();
   };
 
+  Flint.prototype.cancel = function () {
+    clearTimeout(this.timeout);
+  }
 })();

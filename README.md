@@ -35,3 +35,25 @@ setTimeout(function () {
   }, 123);
 }, 1234);
 ```
+
+Globals can also be required without requiring the parents:
+
+```javascript
+
+Flint(function () {
+  console.log("DONE!");
+}, "PACKAGE.Option.DeepOption");
+```
+
+
+
+If you have a case where you might need to cancel a load wait, you can use the `new Flint()` syntax:
+
+```javascript
+var flint = new Flint(function () {
+  console.log("DONE!");
+}, "PACKAGE.Option", "PACKAGE.Option2");
+
+flint.cancel();
+
+```
