@@ -26,7 +26,15 @@
 
     var defined = true;
     for (var i = 1; i < arguments.length; i++) {
-      if (typeof window[arguments[i]] == 'undefined') {
+      // Support dot notation in argument
+      var arg = arguments[i].split('.');
+      var deepValue = window[arg[0]];
+
+      for (var j = 1; j < arg.length; j++) {
+        deepValue = deepValue[arg[j]];
+      }
+
+      if (typeof deepValue == 'undefined') {
         defined = false;
         break;
       }
