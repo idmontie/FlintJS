@@ -12,6 +12,8 @@
    * 
    */
 
+  var root = this;
+
   Flint = function (callback) {
     var self = this;
     var args = arguments;
@@ -26,7 +28,7 @@
       else {
         // Support dot notation in argument
         var arg = input.split('.');
-        var deepValue = window[arg[0]];
+        var deepValue = root[arg[0]];
         if (typeof deepValue == 'undefined') {
           return false;
         }
