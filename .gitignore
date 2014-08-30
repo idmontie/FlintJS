@@ -1,0 +1,5 @@
+# gitignore
+meteor.css
+meteor.html
+meteor.js
+.meteor
