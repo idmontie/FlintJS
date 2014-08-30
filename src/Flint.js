@@ -17,6 +17,7 @@
   Flint = function (callback) {
     var self = this;
     var args = arguments;
+    var watch = root;
     var parse = function (input) {
       if (input instanceof Array) {
         return input.map(function (part) {
@@ -28,7 +29,7 @@
       else {
         // Support dot notation in argument
         var arg = input.split('.');
-        var deepValue = root[arg[0]];
+        var deepValue = watch[arg[0]];
         if (typeof deepValue == 'undefined') {
           return false;
         }
@@ -55,8 +56,16 @@
       return;
     }
 
+    var index = 1;
+
+    if (typeof arguments[1] === "object" &&
+       !(arguments[1] instanceof Array)) {
+      watch = arguments[1];
+      index = 2;
+    }
+
     var defined = true;
-    for (var i = 1; i < arguments.length; i++) {
+    for (var i = index; i < arguments.length; i++) {
       defined = parse(arguments[i]);
 
       if (!defined) {

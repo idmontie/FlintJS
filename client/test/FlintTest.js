@@ -43,6 +43,7 @@
     delete window.TEST1;
     delete window.TEST2;
     delete window.TEST3;
+    delete window.TEST4;
   };
 
   FlintTest.prototype.testThatFlintCanWait = function () {
@@ -99,5 +100,41 @@
     self.tests[index] = true;
   };
 
-  
+  FlintTest.prototype.testThatFlintSupportsObjects = function () {
+    var self = this;
+    var index = self.tests.length;
+    self.tests[index] = false;
+
+    var required = [
+      "TEST3"
+    ];
+
+    var testValue = 0;
+    var testObject = {};
+
+    Flint(function () {
+      testValue = 1;
+    }, testObject, required);
+
+    testValue.should.equal(0);
+
+    setTimeout(function () {
+      TEST3 = "fake out";
+    }, 1000);
+
+    setTimeout(function () {
+      testValue.should.equal(0);
+    }, 1500);
+
+    setTimeout(function () {
+      testObject.TEST3 = "for real";
+    }, 2000);
+
+    setTimeout(function () {
+      testValue.should.equal(1);
+      self.tests[index] = true;
+    }, 2500);
+    
+  };
+
 })();
