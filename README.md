@@ -88,3 +88,8 @@ var flint = new Flint(function () {
 flint.cancel();
 
 ```
+
+License
+=======
+
+MIT :copyright: 2014 Ivan Montiel
