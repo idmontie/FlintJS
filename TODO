@@ -2,5 +2,3 @@ TODO
 ====
 
 * Add warning for circular dependencies
-* Add support for object checks that may not be in the global namespace (aka window)
-* Unit Tests

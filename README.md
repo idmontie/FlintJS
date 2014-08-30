@@ -65,6 +65,17 @@ Flint(function () {
 }, "PACKAGE.Option.DeepOption");
 ```
 
+Objects can be listened to as well:
+
+```javascript
+var myObject = {};
+
+Flint(function () {
+  console.log("DONE!");
+}, myObject, "Option");
+
+myObject.Option = "set";
+```
 
 
 If you have a case where you might need to cancel a load wait, you can use the `new Flint()` syntax:
