@@ -1,4 +1,8 @@
-// Test
+/**
+ * Flint Examples.
+ *
+ * Simple demonstration of what you can do with Flint.
+ */
 
 (function () {
   RunExample = function () {

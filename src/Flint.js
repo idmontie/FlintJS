@@ -2,18 +2,15 @@
  * Flint
  * By: Ivan Montiel
  *
- * TODO support reference checks
  */
 (function () {
+  var root = this;
+
   /**
    * Wait for globals to be defined by other scripts being loaded.
    * 
-   * Usage: Flint(function () { ... }, global1, global2);
-   * 
+   * Usage: Flint(function () { ... }, object (optional), global1, global2...);
    */
-
-  var root = this;
-
   Flint = function (callback) {
     var self = this;
     var args = arguments;
