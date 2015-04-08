@@ -1,6 +1,14 @@
 FlintJS
 =======
 
+[![Code Climate](https://codeclimate.com/github/idmontie/FlintJS/badges/gpa.svg)](https://codeclimate.com/github/idmontie/FlintJS)
+[![Stories in Ready](https://badge.waffle.io/idmontie/FlintJS.svg?label=ready&title=Ready)](http://waffle.io/idmontie/FlintJS)
+
+[![Github release](https://img.shields.io/github/release/idmontie/FlintJS.svg?style=flat)](https://github.com/idmontie/FlintJS/releases)
+[![Github issues](https://img.shields.io/github/issues/idmontie/FlintJS.svg?style=flat)](https://github.com/idmontie/FlintJS/issues)
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat)](https://github.com/idmontie/FlintJS/blob/master/LICENSE.md)
+
+
 MeteorJS loads all Javascript files in the following order:
 
 > The JavaScript and CSS files in an application are loaded according to these rules:
@@ -23,14 +31,20 @@ FlintJS is inefficient and should be only used when restructuring a project to a
 
 Once MeteorJS natively implements custom module loading functionality, this project will be obsolete.
 
-NOTE
-====
+# Notes
 
 Circular dependencies are not currently supported. In order to have a circular dependency, have the two files implement skeleton objects of each other
 whose definitions will be filled in at a later time (a la C and C++);
 
-Usage
-=====
+# Installing
+
+You can use the `flint.js` file in any JavaScript application.  For Meteor users, you just need to add the following package:
+
+```cmd
+meteor add idmontie:flint
+```
+
+# Documentation and Examples
 
 ```javascript
 // Set up Flint to wait for PACKAGE, PACKAGE.Option, and PACKAGE.Option2
@@ -88,8 +102,3 @@ var flint = new Flint(function () {
 flint.cancel();
 
 ```
-
-License
-=======
-
-MIT :copyright: 2014 Ivan Montiel

@@ -1,5 +1,1 @@
-# gitignore
-meteor.css
-meteor.html
-meteor.js
-.meteor
+.DS_Store

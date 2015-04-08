@@ -7,11 +7,20 @@
   var root = this;
 
   /**
+   * Don't run on Meteor Server instances
+   */
+  if (typeof Meteor !== 'undefined') {
+    if ( Meteor.isServer ) {
+      return;
+    }
+  }
+
+  /**
    * Wait for globals to be defined by other scripts being loaded.
    * 
    * Usage: Flint(function () { ... }, object (optional), global1, global2...);
    */
-  Flint = function (callback) {
+  window.Flint = function (callback) {
     var self = this;
     var args = arguments;
     var watch = root;
