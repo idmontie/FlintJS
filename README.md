@@ -8,6 +8,9 @@ FlintJS
 [![Github issues](https://img.shields.io/github/issues/idmontie/FlintJS.svg?style=flat)](https://github.com/idmontie/FlintJS/issues)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat)](https://github.com/idmontie/FlintJS/blob/master/LICENSE.md)
 
+Special file dependency waiting for the client.
+
+# Details
 
 MeteorJS loads all Javascript files in the following order:
 
