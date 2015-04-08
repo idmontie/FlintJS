@@ -49,6 +49,8 @@ meteor add idmontie:flint
 
 # Documentation and Examples
 
+See [idmontie:flint-js-example](https://github.com/idmontie/flint-js-example) for a working example of the package.
+
 ```javascript
 // Set up Flint to wait for PACKAGE, PACKAGE.Option, and PACKAGE.Option2
 // to be defined.
